@@ -5,6 +5,12 @@ const cors = require('cors')
 const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
 const app = express()
+const uuidv1 = require('uuid/v1');
+ 
+// Incantations
+uuidv1();
+uuidv1(options);
+uuidv1(options, buffer, offset);
 
 const morganOption = (NODE_ENV === 'production')
   'tiny' :
