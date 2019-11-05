@@ -4,6 +4,9 @@ const articles = [
     { id: "3", headline: "a string", summary: "Article 3 summary is a summary iof article 3. This will hold a small snippet of the article's text", text: "", comments: [""], categories: ["Tutorial"], image: "IMAGE 3 URL", favorite: true },
 ]
 
+const user =[
+    {name: "guestUser", password:"sample"}
+]
 
 
 

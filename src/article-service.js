@@ -19,7 +19,7 @@ const ArticlesService = {
         .where({ id})
         .delete()
     },
-    updatweArticle(knex, id, newArticleFields){
+    updateArticle(knex, id, newArticleFields){
         return knex('articles')
         .where({ id })
         .update(newArticleFields)
