@@ -1,9 +1,9 @@
 require('dotenv').config()
-const express = require('express')
-const article_router = express()
+const express = require('express');
+const article_router = express();
 const uuid = require('uuid/v4');
 const jsonParser = express.json();
-const articles = require('./store.js')
+const {articles} = require('./store.js');
 
 article_router.get('/articles', (req, res) => {
   res.send(articles);
@@ -37,7 +37,7 @@ article_router.post('/articles', jsonParser, (req, res) => {
 
   if (!headline) {
     res.status(400);
-    res.send('Headline is required')
+    res.send('A Headline is required')
   }
   articles.push({
     headline,
@@ -63,7 +63,7 @@ article_router.delete('/articles/:id', (req, res) => {
       .status(404)
       .send('User not found');
   }
-  articles = articles.filter(b => b.id !== id);
+  articles = articles.find(b => b.id !== id);
 
 
   res.status(204).end();
