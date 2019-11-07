@@ -3,13 +3,13 @@ const express = require('express')
 const article_router = express()
 const uuid = require('uuid/v4');
 const jsonParser = express.json();
-const articles = require('./store')
+const articles = require('./store.js')
 
 article_router.get('/articles', (req, res) => {
   res.send(articles);
 });
 
-article_router.get('/articles/:id', (req, res) => {
+article_router.get('/articles/:id', jsonParser, (req, res) => {
   const {
     id
   } = req.params;
@@ -35,12 +35,12 @@ article_router.post('/articles', jsonParser, (req, res) => {
     favorite
   } = req.body;
 
-  if (!title) {
+  if (!headline) {
     res.status(400);
-    res.send('Title is required')
+    res.send('Headline is required')
   }
   articles.push({
-    title,
+    headline,
     id: uuid(),
     url,
     summary,

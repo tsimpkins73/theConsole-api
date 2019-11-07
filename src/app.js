@@ -6,11 +6,14 @@ const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
 const app = express()
 const uuidv1 = require('uuid/v1');
+/* const errorHandler = require('./errorHandler.js')
+const validator = require('./validator.js') */
+const article_router = require('./article-router.js')
 
 // Incantations
-uuidv1();
+/* uuidv1();
 uuidv1(options);
-uuidv1(options, buffer, offset);
+uuidv1(options, buffer, offset); */
 
 const morganOption = (NODE_ENV === 'production')
 'tiny' ;
@@ -19,6 +22,12 @@ const morganOption = (NODE_ENV === 'production')
 app.use(morgan(morganOption))
 app.use(helmet())
 app.use(cors())
+
+/* app.use(validator)
+app.use(errorHandler)
+ */
+
+ app.use(article_router)
 
 app.get('/', (req, res) => {
   res.send('Hello, world!')

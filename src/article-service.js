@@ -1,3 +1,5 @@
+const articles = require('./store.js')
+
 const ArticlesService = {
     getAllArticles(knex) {
         return knex.select('*').from('articles')
