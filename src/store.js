@@ -1,6 +1,6 @@
 const uuid = require('uuid/v4')
 
-let articles = [
+const articles = [
     { id: "1",
      headline: "a string", summary: "Article 1 summary is a summary iof article 1. This will hold a small snippet of the article's text", text: "", comments: [""], categories: ["Tutorial"], image: "IMAGE 1 URL", favorite: false },
     { id: "2", headline: "another string", summary: "Article 2 summary is a summary iof article 2. This will hold a small snippet of the article's text", text: "", comments: [""], categories: ["News", "New Technology"], image: "IMAGE 2 URL", favorite: true },
@@ -11,6 +11,9 @@ const user =[
     {name: "guestUser", password:"sample"}
 ]
 
+function deleteByID(id) {
+this.articles = this.articles.filter(b => b.id !== id);
 
+}
 
-module.exports = { articles, user }
+module.exports = { articles, user, deleteByID }

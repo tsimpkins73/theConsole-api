@@ -3,17 +3,17 @@ const express = require('express');
 const article_router = express();
 const uuid = require('uuid/v4');
 const jsonParser = express.json();
-const {articles} = require('./store.js');
-
+const store = require('./store.js');
+console.log(store);
 article_router.get('/articles', (req, res) => {
-  res.send(articles);
+  res.send(store.articles);
 });
 
 article_router.get('/articles/:id', jsonParser, (req, res) => {
   const {
     id
   } = req.params;
-  const article = articles.find(b => b.id == id);
+  const article = store.articles.find(b => b.id == id);
 
   if (!article) {
     logger.error(`Article with id ${id} not found.`);
@@ -38,8 +38,9 @@ article_router.post('/articles', jsonParser, (req, res) => {
   if (!headline) {
     res.status(400);
     res.send('A Headline is required')
+    return
   }
-  articles.push({
+  store.articles.push({
     headline,
     id: uuid(),
     url,
@@ -49,21 +50,21 @@ article_router.post('/articles', jsonParser, (req, res) => {
     favorite
   });
   res.status(201);
-  res.send(articles);
+  res.send(store.articles);
 });
 
 article_router.delete('/articles/:id', (req, res) => {
   const {
     id
   } = req.params;
-  const article = articles.find(b => b.id == id);
+  let findArticle = store.articles.find(b => b.id == id);
 
-  if (!article) {
+  if (!findArticle) {
     return res
       .status(404)
       .send('User not found');
   }
-  articles = articles.find(b => b.id !== id);
+  store.deleteByID(id);
 
 
   res.status(204).end();
