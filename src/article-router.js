@@ -23,7 +23,7 @@ article_router.get('/articles/:id', jsonParser, (req, res) => {
   }
 
   res.send(article);
-});
+
 
 article_router.post('/articles', jsonParser, (req, res) => {
   const {
