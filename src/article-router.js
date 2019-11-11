@@ -3,29 +3,45 @@ const express = require('express');
 const article_router = express();
 const uuid = require('uuid/v4');
 const jsonParser = express.json();
-const store = require('./store.js');
-console.log(store);
+const pool = require('../data/config');
+console.log(pool);
+
 article_router.get('/articles', (req, res) => {
-  res.send(store.articles);
+  pool.query('SELECT * FROM articles', (error, result) => {
+    if (error) throw error;
+
+    res.send(result);
+});
 });
 
 article_router.get('/articles/:id', jsonParser, (req, res) => {
   const {
     id
   } = req.params;
-  const article = store.articles.find(b => b.id == id);
-
-  if (!article) {
-    logger.error(`Article with id ${id} not found.`);
-    return res
-      .status(404)
-      .send('Article Not Found');
-  }
-
-  res.send(article);
+  pool.query('SELECT * FROM users WHERE id = ?', id, (error, result) => {
+    if (error) throw error;
+ 
+    res.send(result);
 });
 
-article_router.post('/articles', jsonParser, (req, res) => {
+article_router.post('/articles', (req, res) => {
+  const {
+    headline,
+    url,
+    summary,
+    text,
+    image,
+    favorite
+  } = req.body;
+
+  pool.query('INSERT INTO articles SET ?', req.body, (error, result) => {
+      if (error) throw error;
+
+      res.status(201).send(`Article added with ID: ${result.insertId}`);
+  });
+});
+
+/* article_router.post('/articles', jsonParser, (req, res) => {
   const {
     headline,
     url,
@@ -51,23 +67,18 @@ article_router.post('/articles', jsonParser, (req, res) => {
   });
   res.status(201);
   res.send(store.articles);
-});
+}); */
 
 article_router.delete('/articles/:id', (req, res) => {
   const {
     id
   } = req.params;
-  let findArticle = store.articles.find(b => b.id == id);
+  
+  pool.query('DELETE FROM articles WHERE id = ?', id, (error, result) => {
+    if (error) throw error;
 
-  if (!findArticle) {
-    return res
-      .status(404)
-      .send('User not found');
-  }
-  store.deleteByID(id);
-
-
-  res.status(204).end();
+    res.send('Article deleted.');
+});
 });
 
 module.exports = article_router
