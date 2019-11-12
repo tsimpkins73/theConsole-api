@@ -1,4 +1,4 @@
-const articles = require('./store.js')
+const pool = require('./config.js');
 
 const ArticlesService = {
     getAllArticles(knex) {

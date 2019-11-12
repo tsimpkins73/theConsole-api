@@ -3,7 +3,7 @@ const express = require('express');
 const article_router = express();
 const uuid = require('uuid/v4');
 const jsonParser = express.json();
-const pool = require('../data/config');
+const pool = require('./config.js');
 console.log(pool);
 
 article_router.get('/articles', (req, res) => {

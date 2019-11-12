@@ -6,6 +6,7 @@ const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
 const app = express()
 const uuidv1 = require('uuid/v1');
+const {API_BASE_URL} = require('./config');
 /* const errorHandler = require('./errorHandler.js')
 const validator = require('./validator.js') */
 const article_router = require('./article-router.js')

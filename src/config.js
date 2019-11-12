@@ -14,4 +14,5 @@ module.exports = {
     NODE_ENV: process.env.NODE_ENV || 'development',
     API_TOKEN: process.env.API_TOKEN || 'token',
     pool,
+    API_BASE_URL: 'the-console.herokuapp.com/',
   }
