@@ -5,7 +5,5 @@ CREATE TABLE articles (
     summary TEXT NOT NULL,
     text TEXT NOT NULL,
     image TEXT NOT NULL,
-    categories ARRAY NOT NULL,
-    comments ARRAY,
     favorite BOOLEAN
 );

@@ -1,9 +1,12 @@
-INSERT INTO articles
-    (url, headline, summary, text, image, categories, comments, favorite)
+INSERT INTO articles (url, headline, summary, text, image, favorite)
 VALUES
-    ('https://medium.com/javascript-scene/tdd-changed-my-life-5af0ce099f80', 'TDD Changed My Life' , 'It’s 7:15 am and customer support is swamped. We just got featured on Good Morning America, and a whole bunch of first time customers are bumping into bugs.
+  (
+    'https://medium.com/javascript-scene/tdd-changed-my-life-5af0ce099f80',
+    'TDD Changed My Life',
+    'It’s 7:15 am and customer support is swamped. We just got featured on Good Morning America, and a whole bunch of first time customers are bumping into bugs.
 It’s all-hands-on-deck. We’re going to ship a hot fix NOW before the opportunity to convert more new users is gone. One of the developers has implemented a change he thinks will fix the issue. We paste the staging link in company chat and ask everybody to go test the fix before we push it live to production. It works!
-Our ops superhero fires up his deploy scripts, and minutes later, the change is live. Suddenly, customer support call volume doubles. Our hot-fix broke something else, and the developers erupt in synchronized git blame while the ops hero reverts the change.', 'It’s 7:15 am and customer support is swamped. We just got featured on Good Morning America, and a whole bunch of first time customers are bumping into bugs.It’s all-hands-on-deck. We’re going to
+Our ops superhero fires up his deploy scripts, and minutes later, the change is live. Suddenly, customer support call volume doubles. Our hot-fix broke something else, and the developers erupt in synchronized git blame while the ops hero reverts the change.',
+    'It’s 7:15 am and customer support is swamped. We just got featured on Good Morning America, and a whole bunch of first time customers are bumping into bugs.It’s all-hands-on-deck. We’re going to
 ship a hot fix NOW before the opportunity to convert more new users is gone. One of the developers has implemented a change he thinks will fix the issue. We paste the staging link in company chat and ask everybody to go test the fix before we push it live to production. It works!
 Our ops superhero fires up his deploy scripts, and minutes later, the change is live. Suddenly, customer support call volume doubles. Our hot-fix broke something else, and the developers erupt in synchronized git blame while the ops hero reverts the change.
 Why TDD?
@@ -26,8 +29,7 @@ TDD has a learning curve, and while you’re climbing that learning curve, it ca
 Several years ago I was building a video clip range feature in a UI. The idea was that you’d set a starting point and an ending point for a video, and when the user links to it, it would link to that precise clip rather than the whole video.
 But it wasn’t working. The player would reach the end of the clip and keep on playing, and I had no idea why.
 I kept thinking it had to do with the event listener not getting hooked up properly. My code look something like this:
-video.addEventListener('
-timeupdate', () => {
+video.addEventListener(' timeupdate ', () => {
   if (video.currentTime >= clip.stopTime) {
     video.pause();
   }
@@ -42,17 +44,17 @@ Years later I still remember this because of that feeling. You know exactly what
 
 Actual photos of me while I’m coding.
 If I was writing that UI today, I’d start with something like this:
-describe('clipReducer/setClipStopTime', async assert => {
+describe('' clipReducer / setClipStopTime '', async assert => {
   const stopTime = 5;
   const clipState = {
     startTime: 2,
     stopTime: Infinity
   };
   assert({
-    given: 'clip stop time',
-    should: '
-set clip stop
-time in state',
+    given: '' clip stop time '',
+    should: ''
+    set
+      clip stop time in state '',
     actual: clipReducer(clipState, setClipStopTime(stopTime)),
     expected: { ...clipState, stopTime }
   });
@@ -77,8 +79,15 @@ That process builds a safety net that few bugs will slip through, and that safet
 That reassuring coverage number gives your whole team the confidence to stop gatekeeping every little change to the codebase and let changes thrive.
 Removing fear of change is like oiling a machine. If you don’t do it, the machine grinds to a halt until you clean it up and crank it, squeaking and grinding back into motion.
 Without that fear, the development cadence runs a lot smoother. Pull requests stop backing up. Your CI/CD is running your tests — it will halt if your tests fail. It will fail loudly, and point out what went wrong when it does.
-And that has made all the difference.', 'https://miro.medium.com/max/768/1*UTiUlRqw-jUb3JpoxHo69Q.jpeg' , '[Tutorials, Extended Learning]' , '[]' , 'true'),
-('https://www.freecodecamp.org/news/here-are-some-app-ideas-you-can-build-to-level-up-your-coding-skills-39618291f672/?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more', 'Here are some app ideas you can build to level up your coding skills', 'Have you ever wanted to build something but you had no idea what to do? Just as authors sometimes have "writers block” it’s also true for developers. Together with my friend Jim we created a collection of application ideas which is intended to solve this issue once and for all! ?', 'Have you ever wanted to build something but you had no idea what to do? Just as authors sometimes have “writer"'"s block” it’s also true for developers.
+And that has made all the difference.',
+      'https://miro.medium.com/max/768/1*UTiUlRqw-jUb3JpoxHo69Q.jpeg',
+      true
+  ),
+  (
+    'https://www.freecodecamp.org/news/here-are-some-app-ideas-you-can-build-to-level-up-your-coding-skills-39618291f672/?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more',
+    'Here are some app ideas you can build to level up your coding skills',
+    'Have you ever wanted to build something but you had no idea what to do? Just as authors sometimes have "writers block” it’s also true for developers. Together with my friend Jim we created a collection of application ideas which is intended to solve this issue once and for all! ?',
+    'Have you ever wanted to build something but you had no idea what to do? Just as authors sometimes have “writer"' "s block” it’s also true for developers.
 
 Together with my friend Jim we created a collection of application ideas which is intended to solve this issue once and for all! ?
 
@@ -416,7 +425,7 @@ Only public GitHub repos should be displayed.
 
 User Stories
 User can enter a GitHub user name
-User can click a ‘Generate’ button to create and display the named user"'"s repo timeline
+User can click a ‘Generate’ button to create and display the named user" '"s repo timeline
 User can see a warning message if the GitHub user name is not a valid GitHub user name.
 Bonus features
 User can see a summary of the number of repos tallied by the year they were created
@@ -506,10 +515,17 @@ Survey Coordinators and Survey Respondents can view graphical representations of
 Useful links and resources
 Libraries for building surveys: SurveyJS
 
-Some commercial survey services include: Survey Monkey and Typeform', 'https://cdn-media-1.freecodecamp.org/images/0*v3qXmKe1LTiiW_3H.png', '[Tutorials]', '[]', 'false'),
-('https://www.smashingmagazine.com/2019/11/exploring-new-ways-manage-content-wordpress/', 'Exploring New Ways To Manage Content In WordPress', 'The combination of WordPress"’" versatility for managing data (since its database model supports the creation of different content models, easily extensible through meta attributes) and Gutenberg"’"s rich user interactions provide a powerful mechanism to create, edit and manage content.
+Some commercial survey services include: Survey Monkey and Typeform',
+    'https://cdn-media-1.freecodecamp.org/images/0*v3qXmKe1LTiiW_3H.png',
+    false
+  ),
+  (
+    'https://www.smashingmagazine.com/2019/11/exploring-new-ways-manage-content-wordpress/',
+    'Exploring New Ways To Manage Content In WordPress',
+    'The combination of WordPress"’" versatility for managing data (since its database model supports the creation of different content models, easily extensible through meta attributes) and Gutenberg"’"s rich user interactions provide a powerful mechanism to create, edit and manage content.
 
-In this article, I want to shine some light on these upgraded capabilities, exploring the new tools at our disposition and presenting several new ones to be released sometime in the future.', 'The combination of WordPress"’" versatility for managing data (since its database model supports the creation of different content models, easily extensible through meta attributes) and Gutenberg"’"s rich user interactions provide a powerful mechanism to create, edit and manage content.
+In this article, I want to shine some light on these upgraded capabilities, exploring the new tools at our disposition and presenting several new ones to be released sometime in the future.',
+    'The combination of WordPress"’" versatility for managing data (since its database model supports the creation of different content models, easily extensible through meta attributes) and Gutenberg"’"s rich user interactions provide a powerful mechanism to create, edit and manage content.
 
 In this article, I want to shine some light on these upgraded capabilities, exploring the new tools at our disposition and presenting several new ones to be released sometime in the future.
 
@@ -605,4 +621,7 @@ Through Gutenberg, the media-editing experience could be greatly enhanced: One o
 (I haven’t found any proposal to tackle this issue in Gutenberg’s GitHub repo, but I learned about this idea talking to some core contributors, who expected to be able to work on it some time in the future.)
 
 Conclusion
-Already being the most popular CMS (close to 35% of the web), WordPress has also the chance to offer the most compelling tools to manipulate content. This is because Gutenberg offers an appealing mechanism to create, edit and manage content: A single interface, simple to use, fairly powerful and versatile. With its new content management capabilities, WordPress can become the single source of truth of all our content, to power all our applications (websites, newsletters, apps, and so on) through APIs. Kudos to that!', 'https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_1600/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/95cc313a-b4d1-49a7-aebf-6f636ba4101c/advanced-gallery-block.jpg', '[Tips, Extended Learning]', '[]', 'true'),
+Already being the most popular CMS (close to 35% of the web), WordPress has also the chance to offer the most compelling tools to manipulate content. This is because Gutenberg offers an appealing mechanism to create, edit and manage content: A single interface, simple to use, fairly powerful and versatile. With its new content management capabilities, WordPress can become the single source of truth of all our content, to power all our applications (websites, newsletters, apps, and so on) through APIs. Kudos to that!',
+    'https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_1600/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/95cc313a-b4d1-49a7-aebf-6f636ba4101c/advanced-gallery-block.jpg',
+     true
+  )
