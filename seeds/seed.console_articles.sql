@@ -540,7 +540,7 @@ Whenever we need to collaborate with other people to create content, we will qui
 
 The web is full of interfaces that leave people out. We can fix it. Meet Inclusive Components, our new practical book for building accessible and robust interfaces. From accordions, tables and tabs to buttons, notifications and modals — all in one book. Written by Heydon Pickering.
 
-Check table of contents ↬
+Check table of contents &#8620;
 Feature Panel
 Gutenberg does the job fairly well: When copying the content from a Google Doc and then pasting it into a Gutenberg blog post, the formatting is preserved, bullet lists are properly transformed to the list block, and images are inserted where they should. There may be a few inconsistencies (for instance different spacing across blocks and in the original document) however, for the most part, the process is fit for use.
 
@@ -618,6 +618,7 @@ Through the Media Library, WordPress already provides some image editing capabil
 
 Through Gutenberg, the media-editing experience could be greatly enhanced: One one side, it could support editing the image in more advanced ways, such as applying effects or filters, altering the contrast, replacing colors, adding text as watermark, adding transparent regions, converting it to different formats, and others (for instance, Cloudinary provides an API to apply many transformations to an image, which could be perfectly accessed by a block). On the other side, the editing could happen inline, right where the image is placed inside the blog post. Then, for instance, if the image was added as an overlay against some background, and we add transparent regions to the image, we can visualize in real-time how the composite result looks like.
 
+<<<<<<< HEAD
 (I haven’t found any proposal to tackle this issue in Gutenberg’s GitHub repo, but I learned about this idea talking to some core contributors, who expected to be able to work on it some time in the future.)
 
 Conclusion
@@ -625,3 +626,6 @@ Already being the most popular CMS (close to 35% of the web), WordPress has also
     'https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_1600/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/95cc313a-b4d1-49a7-aebf-6f636ba4101c/advanced-gallery-block.jpg',
      true
   )
+=======
+(I haven’t found any proposal to tackle this issue in Gutenberg’s GitHub repo, but I learned about this idea talking to some core contributors, who expected to be able to work on it some time in the future.)', '()', '[Tips, Extended Learning]', '()', 'true');
+>>>>>>> f3b7c2679ad174c4dc0eb4e47c9e184aa7f5303b
