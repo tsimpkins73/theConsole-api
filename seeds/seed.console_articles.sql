@@ -618,7 +618,6 @@ Through the Media Library, WordPress already provides some image editing capabil
 
 Through Gutenberg, the media-editing experience could be greatly enhanced: One one side, it could support editing the image in more advanced ways, such as applying effects or filters, altering the contrast, replacing colors, adding text as watermark, adding transparent regions, converting it to different formats, and others (for instance, Cloudinary provides an API to apply many transformations to an image, which could be perfectly accessed by a block). On the other side, the editing could happen inline, right where the image is placed inside the blog post. Then, for instance, if the image was added as an overlay against some background, and we add transparent regions to the image, we can visualize in real-time how the composite result looks like.
 
-<<<<<<< HEAD
 (I haven’t found any proposal to tackle this issue in Gutenberg’s GitHub repo, but I learned about this idea talking to some core contributors, who expected to be able to work on it some time in the future.)
 
 Conclusion
@@ -626,6 +625,3 @@ Already being the most popular CMS (close to 35% of the web), WordPress has also
     'https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_1600/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/95cc313a-b4d1-49a7-aebf-6f636ba4101c/advanced-gallery-block.jpg',
      true
   )
-=======
-(I haven’t found any proposal to tackle this issue in Gutenberg’s GitHub repo, but I learned about this idea talking to some core contributors, who expected to be able to work on it some time in the future.)', '()', '[Tips, Extended Learning]', '()', 'true');
->>>>>>> f3b7c2679ad174c4dc0eb4e47c9e184aa7f5303b
