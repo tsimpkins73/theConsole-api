@@ -8,7 +8,8 @@
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
     "predeploy": "npm audit",
-    "deploy": "git push heroku master"
+    "deploy": "git push heroku master",
+    "migrate": "postgrator --config postgrator-config.js"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +21,8 @@
     "helmet": "^3.21.0",
     "knex": "^0.20.1",
     "morgan": "^1.9.1",
+    "pg": "^7.12.1",
+    "postgrator": "^3.10.2",
     "psql": "0.0.1",
     "uuid": "^3.3.3"
   },
