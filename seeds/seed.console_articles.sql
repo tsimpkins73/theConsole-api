@@ -1,4 +1,4 @@
-INSERT INTO articles (url, headline, summary, text, image, favorite)
+INSERT INTO articles (url, headline, summary, text, image, favorite, user_id)
 VALUES
   (
     'https://medium.com/javascript-scene/tdd-changed-my-life-5af0ce099f80',
@@ -29,7 +29,7 @@ TDD has a learning curve, and while you’re climbing that learning curve, it ca
 Several years ago I was building a video clip range feature in a UI. The idea was that you’d set a starting point and an ending point for a video, and when the user links to it, it would link to that precise clip rather than the whole video.
 But it wasn’t working. The player would reach the end of the clip and keep on playing, and I had no idea why.
 I kept thinking it had to do with the event listener not getting hooked up properly. My code look something like this:
-video.addEventListener(' timeupdate ', () => {
+video.addEventListener('' timeupdate '', () => {
   if (video.currentTime >= clip.stopTime) {
     video.pause();
   }
@@ -81,13 +81,14 @@ Removing fear of change is like oiling a machine. If you don’t do it, the mach
 Without that fear, the development cadence runs a lot smoother. Pull requests stop backing up. Your CI/CD is running your tests — it will halt if your tests fail. It will fail loudly, and point out what went wrong when it does.
 And that has made all the difference.',
       'https://miro.medium.com/max/768/1*UTiUlRqw-jUb3JpoxHo69Q.jpeg',
-      true
+      true,
+      1
   ),
   (
     'https://www.freecodecamp.org/news/here-are-some-app-ideas-you-can-build-to-level-up-your-coding-skills-39618291f672/?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more',
     'Here are some app ideas you can build to level up your coding skills',
-    'Have you ever wanted to build something but you had no idea what to do? Just as authors sometimes have "writers block” it’s also true for developers. Together with my friend Jim we created a collection of application ideas which is intended to solve this issue once and for all! ?',
-    'Have you ever wanted to build something but you had no idea what to do? Just as authors sometimes have “writer"' "s block” it’s also true for developers.
+    'Have you ever wanted to build something but you had no idea what to do? Just as authors sometimes have writer''s block it''s also true for developers. Together with my friend Jim we created a collection of application ideas which is intended to solve this issue once and for all! ?',
+    'Have you ever wanted to build something but you had no idea what to do? Just as authors sometimes have writer''s block it''s also true for developers.
 
 Together with my friend Jim we created a collection of application ideas which is intended to solve this issue once and for all! ?
 
@@ -425,7 +426,7 @@ Only public GitHub repos should be displayed.
 
 User Stories
 User can enter a GitHub user name
-User can click a ‘Generate’ button to create and display the named user" '"s repo timeline
+User can click a ‘Generate’ button to create and display the named user''s repo timeline
 User can see a warning message if the GitHub user name is not a valid GitHub user name.
 Bonus features
 User can see a summary of the number of repos tallied by the year they were created
@@ -517,7 +518,8 @@ Libraries for building surveys: SurveyJS
 
 Some commercial survey services include: Survey Monkey and Typeform',
     'https://cdn-media-1.freecodecamp.org/images/0*v3qXmKe1LTiiW_3H.png',
-    false
+    false,
+    2
   ),
   (
     'https://www.smashingmagazine.com/2019/11/exploring-new-ways-manage-content-wordpress/',
@@ -623,5 +625,6 @@ Through Gutenberg, the media-editing experience could be greatly enhanced: One o
 Conclusion
 Already being the most popular CMS (close to 35% of the web), WordPress has also the chance to offer the most compelling tools to manipulate content. This is because Gutenberg offers an appealing mechanism to create, edit and manage content: A single interface, simple to use, fairly powerful and versatile. With its new content management capabilities, WordPress can become the single source of truth of all our content, to power all our applications (websites, newsletters, apps, and so on) through APIs. Kudos to that!',
     'https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_1600/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/95cc313a-b4d1-49a7-aebf-6f636ba4101c/advanced-gallery-block.jpg',
-     true
-  )
+     true,
+     2
+  );
