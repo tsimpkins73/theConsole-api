@@ -4,81 +4,79 @@ const article_router = express();
 const uuid = require('uuid/v4');
 const jsonParser = express.json();
 const pool = require('./config.js');
+const ArticlesService = require('./article-service.js')
 console.log(pool);
 
 article_router.get('/articles', (req, res) => {
-  pool.query('SELECT * FROM articles', (error, result) => {
-    if (error) throw error;
-
-    res.send(result);
+  const knexInstance = req.app.get('db') 
+  ArticlesService.getAllArticles(knexInstance)
+    .then(results => {
+      res.send(results);
+    });
 });
+
+article_router.get('/categories', (req, res) => {
+  const knexInstance = req.app.get('db') 
+  ArticlesService.getAllCategories(knexInstance)
+    .then(results => {
+      res.send(results);
+    });
 });
 
 article_router.get('/articles/:id', jsonParser, (req, res) => {
   const {
     id
   } = req.params;
-  pool.query('SELECT * FROM users WHERE id = ?', id, (error, result) => {
-    if (error) throw error;
+  const knexInstance = req.app.get('db')
  
-    res.send(result);
+  ArticlesService.getById(knexInstance, id)
+    .then(results => {
+      res.send(results);
+    });
 });
+
+article_router.get('/articles/category/:categoryid', jsonParser, (req, res) => {
+  const {
+    categoryId
+  } = req.params;
+  const knexInstance = req.app.get('db') 
+  
+  ArticlesService.getArticlesByCategoryId(knexInstance, categoryId)
+    .then(results => {
+      res.send(results);
+    });
+});
+
 
 article_router.post('/articles', (req, res) => {
-  const {
+  const { newArticle = {
     headline,
     url,
     summary,
     text,
     image,
-    favorite
-  } = req.body;
+    favorite }
+} = req.body;
+const knexInstance = req.app.get('db')
 
-  pool.query('INSERT INTO articles SET ?', req.body, (error, result) => {
-      if (error) throw error;
 
-      res.status(201).send(`Article added with ID: ${result.insertId}`);
-  });
+ArticlesService.insertArticle(knexInstance, newArticle)
+.then(results => {
+  res.send(results);
+});
 });
 
-/* article_router.post('/articles', jsonParser, (req, res) => {
-  const {
-    headline,
-    url,
-    summary,
-    text,
-    image,
-    favorite
-  } = req.body;
-
-  if (!headline) {
-    res.status(400);
-    res.send('A Headline is required')
-    return
-  }
-  store.articles.push({
-    headline,
-    id: uuid(),
-    url,
-    summary,
-    text,
-    image,
-    favorite
-  });
-  res.status(201);
-  res.send(store.articles);
-}); */
 
 article_router.delete('/articles/:id', (req, res) => {
   const {
     id
   } = req.params;
-  
-  pool.query('DELETE FROM articles WHERE id = ?', id, (error, result) => {
-    if (error) throw error;
+  const knexInstance = req.app.get('db')
 
-    res.send('Article deleted.');
-});
+  ArticlesService.deleteArticle(knexInstance, id)
+  .then(results => {
+    res.send(results);
+  });
 });
 
 module.exports = article_router
