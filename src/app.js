@@ -9,14 +9,10 @@ const uuidv1 = require('uuid/v1');
 const {API_BASE_URL} = require('./config');
 /* const errorHandler = require('./errorHandler.js')
 const validator = require('./validator.js') */
-const article_router = require('./article-router.js')
+const article_router = require('./article-router.js');
 
-// Incantations
-/* uuidv1();
-uuidv1(options);
-uuidv1(options, buffer, offset); */
 
-const morganOption = (NODE_ENV === 'production')
+const morganOption = (NODE_ENV === 'production');
 'tiny' ;
 'common';
 
