@@ -10,6 +10,20 @@ const UsersService = {
     });
 },
 
+getUserWithUserId(db, userId) {
+  return db('users').select('id', 'username', 'name')
+    .where('id', { userId })
+    .first()
+    .then(results => {
+      res.send(results);
+    });
+},
+
+getUserWithUsername(db, username) {
+  return db('users')
+    .where('username', username)
+    .first()
+},
   hasUserWithUserName(db, username) {
     return db('users')
       .where({ username })

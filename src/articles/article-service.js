@@ -13,11 +13,11 @@ const ArticlesService = {
     },
 
    getArticlesByCategoryId(knex, categoryId) {
-         return knex.from('articles')
+    console.log(categoryId)     
+    return knex.from('articles')
+         .join('article_categories','article_id', 'articles.id')
+         .where('category_id', categoryId)
          .select('*')
-         .join('article_categories')
-         .where('article_categories.article_id' , 'articles.id')
-         .where('article_categories.category_id', categoryId)
      },
 
     getArticleById(knex, id) {
