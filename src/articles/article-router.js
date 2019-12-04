@@ -47,7 +47,7 @@ article_router.get('/api/comments/:id', jsonParser, (req, res) => {
     
 });
 
-article_router.get('/api/articles/category/:categoryid', jsonParser, (req, res) => {
+article_router.get('/api/articles/category/:categoryId', jsonParser, (req, res) => {
   const {
     categoryId
   } = req.params;
