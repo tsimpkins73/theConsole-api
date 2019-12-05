@@ -1,6 +1,9 @@
 const app = require('./app')
 const cors = require('cors');
-const { CLIENT_ORIGIN, DB_URL } = require('./config');
+const {
+  CLIENT_ORIGIN,
+  DB_URL
+} = require('./config');
 const knex = require('knex')
 const db = knex({
   client: 'pg',
