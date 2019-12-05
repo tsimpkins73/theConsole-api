@@ -14,9 +14,6 @@ getUserWithUserId(db, userId) {
   return db('users').select('id', 'username', 'name')
     .where('id', { userId })
     .first()
-    .then(results => {
-      res.send(results);
-    });
 },
 
 getUserWithUsername(db, username) {
