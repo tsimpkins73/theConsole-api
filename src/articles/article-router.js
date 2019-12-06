@@ -1,7 +1,6 @@
 require('dotenv').config()
 const express = require('express');
 const article_router = express();
-const uuid = require('uuid/v4');
 const jsonParser = express.json();
 const ArticlesService = require('./article-service.js')
 

@@ -20,7 +20,7 @@ app.use(
 );
 app.use(helmet())
 
-app.use('/api/articles', articlesRouter)
+app.use(articlesRouter)
 app.use('/api/comments', commentsRouter)
 app.use('/api/auth', authRouter)
 app.use('/api/users', usersRouter)
