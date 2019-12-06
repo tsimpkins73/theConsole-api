@@ -16,5 +16,5 @@ module.exports = {
     config,
     JWT_SECRET: process.env.JWT_SECRET || 'theConsole',
     JWT_EXPIRY: process.env.JWT_EXPIRY || '2h',
-    Access-Control-Allow-Origin: process.env.CLIENT_ORIGIN || 'https://theconsole-thankful-cassowary.now.sh/',
+    CLIENT_ORIGIN: process.env.CLIENT_ORIGIN || 'https://theconsole-thankful-cassowary.now.sh/',
   }
