@@ -19,6 +19,10 @@ app.use(
   })
 );
 app.use(helmet())
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
 
 app.use(articlesRouter)
 app.use(commentsRouter)
