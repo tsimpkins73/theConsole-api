@@ -1,13 +1,11 @@
 const mysql = require('mysql');
 
 const config = {
-  host: 'localhost',
-  user: 'consoleAdmin',
-  password: '73rdtitan',
-  database: 'theConsoleDB',
+  host: 'ec2-174-129-254-217.compute-1.amazonaws.com',
+  user: 'fyxberjbsmgram,
+  password: '3b5dd74bbacb752ce6970bdcc42b81e4e0594683dcdc4d8e22731a9a8e1760e4',
+  database: 'tde7a6qnferjba2',
 };
-
-const pool = mysql.createPool(config);
 
 module.exports = {
     PORT: process.env.PORT || 8000,
