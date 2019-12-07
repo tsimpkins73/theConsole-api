@@ -21,7 +21,7 @@ usersRouter
   });
 })
 
-.post('/api/', jsonBodyParser, (req, res, next) => {
+.post('/api/users', jsonBodyParser, (req, res, next) => {
     const { password, username, name, } = req.body
 
     for (const field of ['name', 'username', 'password'])
