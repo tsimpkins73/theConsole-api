@@ -6,12 +6,12 @@ const usersRouter = express.Router()
 const jsonBodyParser = express.json()
 
 usersRouter
-.get('/api/', (req, res, next) => {
+.get('/api/users/', (req, res, next) => {
   UsersService.getAllUsers(req.app.get('db'))
   .catch(next)
 })
 
-.get('/api/:username', (req, res, next) => {
+.get('/api/users/:username', (req, res, next) => {
   const { username } = req.params
   console.log(username)
   UsersService.getUserWithUsername(req.app.get('db'), username)
