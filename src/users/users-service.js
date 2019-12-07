@@ -5,9 +5,7 @@ const REGEX_UPPER_LOWER_NUMBER_SPECIAL = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*
 
 const UsersService = {
   getAllUsers(db) {
-    return db('users').select('id', 'username', 'name').then(results => {
-      res.send(results);
-    });
+    return db('users').select('id', 'username', 'name')
 },
 
 getUserWithUserId(db, userId) {
