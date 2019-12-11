@@ -37,9 +37,6 @@ const CommentsService = {
       .into('comments')
       .returning('*')
       .then(([comment]) => comment)
-      .then(comment =>
-        CommentsService.getById(db, comment.id)
-      )
   },
 
   serializeComment(comment) {
@@ -49,13 +46,13 @@ const CommentsService = {
       text: xss(comment.text),
       article_id: comment.article_id,
       date_created: new Date(comment.date_created),
-      user: {
+      user: user?{
         id: user.id,
         user_name: user.username,
         name: user.name,
         date_created: new Date(user.date_created),
         date_modified: new Date(user.date_modified) || null
-      },
+      }:{},
     }
   }
 }
