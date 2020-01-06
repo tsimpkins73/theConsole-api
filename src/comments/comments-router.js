@@ -8,6 +8,8 @@ const jsonBodyParser = express.json()
 
 commentsRouter
   .route('/api/comments')
+ 
+
   .post(requireAuth, jsonBodyParser, (req, res, next) => {
     const { article_id, text } = req.body
     const newComment = { article_id, text }

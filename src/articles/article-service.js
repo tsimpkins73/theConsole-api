@@ -71,8 +71,10 @@ const ArticlesService = {
     },
 
     deleteComment(knex, id) {
-        return knex('comments')
-            .where({ id })
+        console.log(id)
+        return knex.from('comments')
+        .select('*')
+            .where('id', id )
             .delete()
     },
 

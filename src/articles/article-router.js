@@ -46,6 +46,19 @@ article_router.get('/api/comments/:id', jsonParser, (req, res) => {
     
 });
 
+article_router.delete('/api/comments/:id', jsonParser, (req, res) => {
+  const {
+    id
+  } = req.params;
+  const knexInstance = req.app.get('db')
+ 
+  ArticlesService.deleteArticleComments(knexInstance, id)
+    .then(results => {
+      res.send(results);
+    });
+    
+});
+
 article_router.get('/api/articles/category/:categoryId', jsonParser, (req, res) => {
   const {
     categoryId

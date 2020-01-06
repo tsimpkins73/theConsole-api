@@ -1,7 +1,7 @@
 const xss = require('xss')
 
 const CommentsService = {
-  getByArticleId(db, articleid) {
+  getByArticleId(db, article_id) {
     return db
       .from('comments as comm')
       .select(
@@ -27,7 +27,7 @@ const CommentsService = {
         'comm.user_id',
         'usr.id',
       )
-      .where('comm.id', id)
+      .where('comm.article_id', article_id)
       .first()
   },
 
@@ -39,6 +39,11 @@ const CommentsService = {
       .then(([comment]) => comment)
   },
 
+  deleteComment(db, commentId) {
+    return db
+      .delete(commentId)
+      .from('comments')
+  },
   serializeComment(comment) {
     const { user } = comment
     return {

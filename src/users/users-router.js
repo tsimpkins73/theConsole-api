@@ -6,9 +6,12 @@ const usersRouter = express.Router()
 const jsonBodyParser = express.json()
 
 usersRouter
-.get('/api/users/', (req, res, next) => {
+.get('/api/users', (req, res, next) => {
   UsersService.getAllUsers(req.app.get('db'))
   .catch(next)
+  .then(results => {
+    res.send(results);
+  });
 })
 
 .get('/api/users/:username', (req, res, next) => {
