@@ -4,6 +4,7 @@ const article_router = express();
 const jsonParser = express.json();
 const ArticlesService = require('./article-service.js');
 const jsonBodyParser = express.json();
+const cors = require('cors');
 
 article_router.get('/api/articles', (req, res) => {
   const knexInstance = req.app.get('db') 
@@ -80,7 +81,8 @@ article_router.post('/api/articles', jsonBodyParser, (req, res, next) => {
     summary,
     text,
     image,
-    favorite } = req.body;
+    favorite,
+  user_id } = req.body;
 const newArticle = {
   headline,
   url,
@@ -98,13 +100,12 @@ for (const [key, value] of Object.entries(newArticle))
 
 
 
-newArticle.user_id = req.user.id
+newArticle.user_id = {user_id}
 
 ArticlesService.insertArticle(knexInstance, newArticle)
       .then(article => {
         res
           .status(201)
-          .location(path.posix.join(req.originalUrl, `/${article.id}`))
           .json(ArticlesService.serializeArticle(article))
       })
       .catch(next)
