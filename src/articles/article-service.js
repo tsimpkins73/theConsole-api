@@ -36,9 +36,7 @@ const ArticlesService = {
             .insert(newArticle)
             .into('articles')
             .returning('*')
-            .then(rows => {
-                return rows[0]
-            })
+            .then(([article]) => article)
     },
 
     insertArticleCategory(knex, newArticleCategory) {
@@ -61,6 +59,18 @@ const ArticlesService = {
             })
     },
 
+
+    serializeArticle(article) {
+        return {
+          headline:xss(article.headline),
+          url:xss(article.url),
+          summary:xss(article.summary),
+          text:xss(article.text),
+          image:xss(article.image),
+          favorite: article.favorite,
+          user_id: article.user_id
+        }
+      },
 
     /* DELETES */
 

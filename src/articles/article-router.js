@@ -2,7 +2,8 @@ require('dotenv').config()
 const express = require('express');
 const article_router = express();
 const jsonParser = express.json();
-const ArticlesService = require('./article-service.js')
+const ArticlesService = require('./article-service.js');
+const jsonBodyParser = express.json();
 
 article_router.get('/api/articles', (req, res) => {
   const knexInstance = req.app.get('db') 
@@ -52,9 +53,9 @@ article_router.delete('/api/comments/:id', jsonParser, (req, res) => {
   } = req.params;
   const knexInstance = req.app.get('db')
  
-  ArticlesService.deleteArticleComments(knexInstance, id)
+  ArticlesService.deleteComment(knexInstance, id)
     .then(results => {
-      res.send(results);
+      res.sendStatus(200);
     });
     
 });
@@ -72,22 +73,41 @@ article_router.get('/api/articles/category/:categoryId', jsonParser, (req, res) 
 });
 
 
-article_router.post('/api/articles', (req, res) => {
-  const { newArticle = {
+article_router.post('/api/articles', jsonBodyParser, (req, res, next) => {
+  const {
     headline,
     url,
     summary,
     text,
     image,
-    favorite }
-} = req.body;
-const knexInstance = req.app.get('db')
+    favorite } = req.body;
+const newArticle = {
+  headline,
+  url,
+  summary,
+  text,
+  image,
+  favorite };
 
+const knexInstance = req.app.get('db')
+for (const [key, value] of Object.entries(newArticle))
+      if (value == null)
+        return res.status(400).json({
+          error: `Missing '${key}' in request body`
+        })
+
+
+
+newArticle.user_id = req.user.id
 
 ArticlesService.insertArticle(knexInstance, newArticle)
-.then(results => {
-  res.send(results);
-});
+      .then(article => {
+        res
+          .status(201)
+          .location(path.posix.join(req.originalUrl, `/${article.id}`))
+          .json(ArticlesService.serializeArticle(article))
+      })
+      .catch(next)
 });
 
 
