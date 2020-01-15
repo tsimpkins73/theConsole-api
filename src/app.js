@@ -7,7 +7,7 @@ const articlesRouter = require('./articles/article-router')
 const commentsRouter = require('./comments/comments-router')
 const authRouter = require('./auth/auth-router')
 const usersRouter = require('./users/users-router')
-
+require('dotenv').config()
 const app = express()
 
 app.use(morgan((NODE_ENV === 'production') ? 'tiny' : 'common', {
