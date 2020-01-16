@@ -21,7 +21,10 @@ commentsRouter
         })
 
     newComment.user_id = req.user.id
-
+    if (!newComment.user_id)
+    return res.status(400).json({
+      error: `Missing User_Id in request body`
+    })
     CommentsService.insertComment(
       req.app.get('db'),
       newComment
