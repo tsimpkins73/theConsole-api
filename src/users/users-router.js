@@ -1,7 +1,7 @@
 const express = require('express')
 const path = require('path')
 const UsersService = require('./users-service')
-
+const jsonParser = express.json();
 const usersRouter = express.Router()
 const jsonBodyParser = express.json()
 
@@ -24,6 +24,19 @@ usersRouter
   });
 })
 
+.delete('/api/users/:username', jsonParser, (req, res) => {
+  const {
+    username
+  } = req.params;
+  const knexInstance = req.app.get('db')
+ 
+  UsersService.deleteUser(knexInstance, username)
+    .then(results => {
+      res.sendStatus(204);
+    });
+    
+})
+
 .post('/api/users', jsonBodyParser, (req, res, next) => {
     const { password, username, name, } = req.body
 
@@ -32,8 +45,6 @@ usersRouter
         return res.status(400).json({
           error: `Missing '${field}' in request body`
         })
-
-    // TODO: check username doesn't start with spaces
 
     const passwordError = UsersService.validatePassword(password)
 

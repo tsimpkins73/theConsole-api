@@ -14,6 +14,8 @@ article_router.get('/api/articles', (req, res) => {
     });
 });
 
+
+
 article_router.get('/api/categories', (req, res) => {
   const knexInstance = req.app.get('db') 
   ArticlesService.getAllCategories(knexInstance)
@@ -28,7 +30,7 @@ article_router.get('/api/articles/:id', jsonParser, (req, res) => {
   } = req.params;
   const knexInstance = req.app.get('db')
  
-  ArticlesService.getById(knexInstance, id)
+  ArticlesService.getArticleById(knexInstance, id)
     .then(results => {
       res.send(results);
     });
@@ -56,7 +58,7 @@ article_router.delete('/api/comments/:id', jsonParser, (req, res) => {
  
   ArticlesService.deleteComment(knexInstance, id)
     .then(results => {
-      res.sendStatus(200);
+      res.sendStatus(204);
     });
     
 });

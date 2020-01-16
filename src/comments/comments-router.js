@@ -2,13 +2,11 @@ const express = require('express')
 const path = require('path')
 const CommentsService = require('./comments-service')
 const { requireAuth } = require('../middleware/jwt-auth')
-
 const commentsRouter = express.Router()
 const jsonBodyParser = express.json()
 
 commentsRouter
   .route('/api/comments')
- 
 
   .post(requireAuth, jsonBodyParser, (req, res, next) => {
     const { article_id, text } = req.body
@@ -21,7 +19,10 @@ commentsRouter
         })
 
     newComment.user_id = req.user.id
-
+    if (!newComment.user_id)
+    return res.status(400).json({
+      error: `Missing User_Id in request body`
+    })
     CommentsService.insertComment(
       req.app.get('db'),
       newComment
