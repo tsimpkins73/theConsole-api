@@ -58,7 +58,7 @@ article_router.delete('/api/comments/:id', jsonParser, (req, res) => {
  
   ArticlesService.deleteComment(knexInstance, id)
     .then(results => {
-      res.sendStatus(200);
+      res.sendStatus(204);
     });
     
 });

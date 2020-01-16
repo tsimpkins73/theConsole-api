@@ -26,18 +26,17 @@ describe('theConsole API', function () {
     app.set('db', db)
   })
 
-  after('disconnect from db', () => db.destroy())
 
 
   let server;
-  /*  before(function () {
+ before(function () {
      return app.startServer()
        .then(instance => server = instance);
    });
  
    after(function () {
      return server.stopServer();
-   }); */
+   });
 
   describe('Static server', function () {
 
@@ -125,42 +124,30 @@ describe('theConsole API', function () {
 
 
     it('should create and return a new item when provided valid data', function () {
-      const newItem = {
-        'password': 'Password34!',
-        'username': 'Test User',
-        'name': 'User Test'
+      const newUser = {
+        'password': 'Password32!',
+        'username': 'Test-User',
+        'name': 'User-Test'
       };
 
       return chai.request(app)
         .post('/api/users')
-        .send(newItem)
+        .send(newUser)
         .then(function (res) {
           expect(res).to.have.status(201);
-          console.log(res);
           expect(res).to.be.json;
           expect(res.body).to.be.a('object');
-          expect(res.body).to.include.keys('password', 'username', 'name');
-          expect(res.body.username).to.equal(newItem.username);
-          expect(res.body.name).to.equal(newItem.name);
-          expect(res.body.password).to.equal(newItem.password);
+          expect(res.body).to.include.keys('email', 'id', 'name', 'username');
         });
     });
-
-    it('should return an error when missing "Username" field', function () {
-      const newItem = {
-                'name': 'Test user 1',
-        'password': 'Password34!',
-      };
-      return chai.request(app)
-        .post('/api/users')
-        .send(newItem)
-        .catch(err => err.response)
-        .then(res => {
-          expect(res).to.have.status(400);
-          expect(res).to.be.json;
-          expect(res.body).to.be.a('object');
-          expect(res.body.message).to.equal('Missing username in request body');
-        });
+        it('should delete the test user', function () {
+          const newUser = {
+            'password': 'Password32!',
+            'username': 'Test-User',
+            'name': 'User-Test'
+          };
+          return chai.request(app)
+        .delete(`'/api/users:${newUser.username}'`);
     });
 
   });

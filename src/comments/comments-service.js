@@ -39,11 +39,15 @@ const CommentsService = {
       .then(([comment]) => comment)
   },
 
-  deleteComment(db, commentId) {
-    return db
-      .delete(commentId)
-      .from('comments')
+  deleteComment(knex, id) {
+    console.log(id)
+    return knex.from('comments')
+      .select('*')
+      .where('id', id)
+      .delete()
   },
+
+
   serializeComment(comment) {
     const { user } = comment
     return {
@@ -51,13 +55,13 @@ const CommentsService = {
       text: xss(comment.text),
       article_id: comment.article_id,
       date_created: new Date(comment.date_created),
-      user: user?{
+      user: user ? {
         id: user.id,
         user_name: user.username,
         name: user.name,
         date_created: new Date(user.date_created),
         date_modified: new Date(user.date_modified) || null
-      }:{},
+      } : {},
     }
   }
 }

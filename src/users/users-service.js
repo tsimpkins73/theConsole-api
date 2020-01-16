@@ -50,6 +50,15 @@ getUserWithUsername(db, username) {
   hashPassword(password) {
     return bcrypt.hash(password, 12)
   },
+
+  deleteUser(knex, username) {
+    console.log(username)
+    return knex.from('users')
+    .select('*')
+        .where('username', username )
+        .delete()
+},
+
   serializeUser(user) {
     return {
       id: user.id,
