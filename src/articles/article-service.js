@@ -13,7 +13,6 @@ const ArticlesService = {
     },
 
    getArticlesByCategoryId(knex, categoryId) {
-    console.log(categoryId)     
     return knex.from('articles')
          .join('article_categories','article_id', 'articles.id')
          .where('category_id', categoryId)
@@ -81,7 +80,6 @@ const ArticlesService = {
     },
 
     deleteComment(knex, id) {
-        console.log(id)
         return knex.from('comments')
         .select('*')
             .where('id', id )
