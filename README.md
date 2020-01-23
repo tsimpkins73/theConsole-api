@@ -1,26 +1,86 @@
-# Express Boilerplate!
+# theConsole-API
 
-This is a boilerplate project used for starting new projects!
+### GET https://the-console.herokuapp.com/api/articles
+https://the-console.herokuapp.com/api/articles
 
-## Set up
+Example Request
+https://the-console.herokuapp.com/api/articles
+curl --location --request GET 'https://the-console.herokuapp.com/api/articles'
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+### POST https://the-console.herokuapp.com/api/articles/
+https://the-console.herokuapp.com/api/articles/
 
-## Scripts
+BODY raw
+headline: "NEW ARTICLE HEADLINE",
+summary: "NEW ARTICLE summary",
+text: "NEW ARTICLE Text",
+comments: ["NEW ARTICLE  Comment 1",  "NEW ARTICLE  Comment 2"],
+categories: "News",
+image: "NEW ARTICLE",
+url: "www.NEW ARTICLE.com",
+favorite: true
 
-Start the application `npm start`
 
-Start nodemon for the application `npm run dev`
+Example Request
+https://the-console.herokuapp.com/api/articles/
+curl --location --request POST 'https://the-console.herokuapp.com/api/articles/' \
+--data-raw 'headline: "NEW ARTICLE HEADLINE",
+summary: "NEW ARTICLE summary",
+text: "NEW ARTICLE Text",
+comments: ["NEW ARTICLE  Comment 1",  "NEW ARTICLE  Comment 2"],
+categories: "News",
+image: "NEW ARTICLE",
+url: "www.NEW ARTICLE.com",
+favorite: true
+'
 
-Run the tests `npm test`
 
-## Deploying
+### GET https://the-console.herokuapp.com/api/users
+https://the-console.herokuapp.com/api/users
 
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
+
+Example Request
+https://the-console.herokuapp.com/api/users
+curl --location --request GET 'https://the-console.herokuapp.com/api/users'
+
+
+### GET https://the-console.herokuapp.com/api/comments/1
+https://the-console.herokuapp.com/api/comments/1
+
+
+Example Request
+https://the-console.herokuapp.com/api/comments/1
+curl --location --request GET 'https://the-console.herokuapp.com/api/comments/1'
+
+
+### POST https://the-console.herokuapp.com/api/comments/
+https://the-console.herokuapp.com/api/comments/
+BODY raw
+article_id: 1,
+text: "NEW Comment Text",
+user_id: 1
+authToken: 'bearer-1245'
+
+
+Example Request
+https://the-console.herokuapp.com/api/comments/
+curl --location --request POST 'https://the-console.herokuapp.com/api/comments/' \
+--data-raw 'article_id: 1,
+text: "NEW Comment Text",
+user_id: 1
+authToken: '\''bearer-1245'\'''
+
+
+### POST https://the-console.herokuapp.com/api/comments/
+https://the-console.herokuapp.com/api/auth/login
+BODY raw
+username: 'test@test.com',
+password: "Password35!",
+
+
+Example Request
+https://the-console.herokuapp.com/api/comments/
+curl --location --request POST 'https://the-console.herokuapp.com/api/auth/login' \
+--data-raw 'username: '\''test@test.com'\'',
+password: "Password35!",'
