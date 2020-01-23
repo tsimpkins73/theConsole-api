@@ -52,7 +52,6 @@ getUserWithUsername(db, username) {
   },
 
   deleteUser(knex, username) {
-    console.log(username)
     return knex.from('users')
     .select('*')
         .where('username', username )
