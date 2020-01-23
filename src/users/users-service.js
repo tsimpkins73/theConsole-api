@@ -16,7 +16,7 @@ getUserWithUserId(db, userId) {
 
 getUserWithUsername(db, username) {
   return db('users')
-    .where('username', username).select('id', 'username', 'name', 'user_id')
+    .where('username', username).select('id', 'username', 'name')
     .first()
 },
   hasUserWithUserName(db, username) {
